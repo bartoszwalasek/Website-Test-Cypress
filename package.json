@@ -1,7 +1,7 @@
 {
   "name": "website-test-cypress",
   "version": "1.0.0",
-  "description": "Repository to tests website - https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+  "description": "Repository to tests website - https://www.automationexercise.com/",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -15,7 +15,7 @@ describe("Register and login test cases", () => {
     cy.findAndClick('[data-qa="signup-button"]');
     cy.findAndAssertText(".login-form", "Enter Account Information");
     cy.findAndAssertText(".login-form", "Address Information");
-    cy.findAndCheck("#id_gender1");
+    cy.findAndCheck(`[value=${user.gender}]`);
     cy.get('[data-qa="name"]')
       .should("have.value", `${user.name}`)
       .should("have.attr", "required");

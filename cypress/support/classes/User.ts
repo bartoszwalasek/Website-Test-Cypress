@@ -1,13 +1,14 @@
 interface DateOfBirth {
-    day: string;
-    month: string;
-    year: string;
-  }
+  day: string;
+  month: string;
+  year: string;
+}
 
 export class User {
   name: string;
   email: string;
   password: string;
+  gender: string;
   dateOfBirth: DateOfBirth;
   firstName: string;
   lastName: string;
@@ -22,6 +23,7 @@ export class User {
     this.name = "Test User";
     this.email = "testuser@example.com";
     this.password = "P@ssword1!";
+    this.gender = "Mr";
     this.dateOfBirth = {
       day: "15",
       month: "March",

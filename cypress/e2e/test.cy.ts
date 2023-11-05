@@ -21,9 +21,9 @@ describe("Register and login test cases", () => {
       .should("be.disabled")
       .should("have.attr", "required");
     cy.findTypeAndAssertRequired('[data-qa="password"]', "P@ssword1!");
-    cy.get('[data-qa="days"]').select("15").should("have.value", "15");
-    cy.get('[data-qa="months"]').select("March").should("have.value", "3");
-    cy.get('[data-qa="years"]').select("1980").should("have.value", "1980");
+    cy.findSelectAndAssertValue('[data-qa="days"]', "15", "15");
+    cy.findSelectAndAssertValue('[data-qa="months"]', "March", "3");
+    cy.findSelectAndAssertValue('[data-qa="years"]', "1980", "1980");
     cy.get("#newsletter").check();
     cy.get("#optin").check();
     cy.findTypeAndAssertRequired('[data-qa="first_name"]', "First Test Name");
@@ -31,9 +31,7 @@ describe("Register and login test cases", () => {
     cy.get('[data-qa="company"]').should("not.have.attr", "required");
     cy.findTypeAndAssertRequired('[data-qa="address"]', "Test address");
     cy.get('[data-qa="address2"]').should("not.have.attr", "required");
-    cy.get('[data-qa="country"]')
-      .select("Canada")
-      .should("have.value", "Canada");
+    cy.findSelectAndAssertValue('[data-qa="country"]', "Canada", "Canada");
     cy.findTypeAndAssertRequired('[data-qa="state"]', "Test State");
     cy.findTypeAndAssertRequired('[data-qa="city"]', "Test City");
     cy.findTypeAndAssertRequired('[data-qa="zipcode"]', "00000");

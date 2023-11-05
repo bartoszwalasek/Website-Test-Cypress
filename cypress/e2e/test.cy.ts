@@ -6,9 +6,12 @@ describe("Register and login test cases", () => {
     cy.get("#form")
       .should("contain.text", "Login to your account")
       .should("contain.text", "New User Signup!");
-    cy.get('[data-qa="signup-name"]').type("Test user");
-    cy.get('[data-qa="signup-email"]').type("testuser@example.com");
-    cy.get('[data-qa="signup-button"]').click();
+    cy.findAndTypeWithoutAssert('[data-qa="signup-name"]', "Test user");
+    cy.findAndTypeWithoutAssert(
+      '[data-qa="signup-email"]',
+      "testuser@example.com"
+    );
+    cy.findAndClick('[data-qa="signup-button"]');
     cy.get(".login-form")
       .should("contain.text", "Enter Account Information")
       .should("contain.text", "Address Information");
@@ -36,12 +39,12 @@ describe("Register and login test cases", () => {
     cy.findTypeAndAssertRequired('[data-qa="city"]', "Test City");
     cy.findTypeAndAssertRequired('[data-qa="zipcode"]', "00000");
     cy.findTypeAndAssertRequired('[data-qa="mobile_number"]', "987654321");
-    cy.get('[data-qa="create-account"]').click();
+    cy.findAndClick('[data-qa="create-account"]');
     cy.get('[data-qa="account-created"]').should(
       "contain.text",
       "Account Created"
     );
-    cy.get('[data-qa="continue-button"]').click();
+    cy.findAndClick('[data-qa="continue-button"]');
     cy.get(".shop-menu > .nav").should(
       "contain.text",
       "Logged in as Test user"
@@ -51,6 +54,6 @@ describe("Register and login test cases", () => {
       "contain.text",
       "Account Deleted"
     );
-    cy.get('[data-qa="continue-button"]').click();
+    cy.findAndClick('[data-qa="continue-button"]');
   });
 });

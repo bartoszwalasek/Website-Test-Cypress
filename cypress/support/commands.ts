@@ -13,6 +13,8 @@ declare global {
         value: string
       ): Chainable<void>;
       findAndClick(selector: string): Chainable<void>;
+      findAndCheck(selector: string): Chainable<void>;
+      findAndAssertText(selector: string, text: string): Chainable<void>;
     }
   }
 }
@@ -31,4 +33,12 @@ Cypress.Commands.add("findSelectAndAssertValue", (selector, select, value) => {
 
 Cypress.Commands.add("findAndClick", (selector) => {
   cy.get(selector).click();
+});
+
+Cypress.Commands.add("findAndCheck", (selector) => {
+    cy.get(selector).check();
+  });
+
+Cypress.Commands.add("findAndAssertText", (selector, text) => {
+  cy.get(selector).should("contain.text", text);
 });

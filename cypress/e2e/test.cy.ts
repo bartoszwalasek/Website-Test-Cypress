@@ -20,41 +20,24 @@ describe("Register and login test cases", () => {
       .should("have.value", "testuser@example.com")
       .should("be.disabled")
       .should("have.attr", "required");
-    cy.get('[data-qa="password"]')
-      .type("P@ssword1!")
-      .should("have.attr", "required");
+    cy.findTypeAndAssertRequired('[data-qa="password"]', "P@ssword1!");
     cy.get('[data-qa="days"]').select("15").should("have.value", "15");
     cy.get('[data-qa="months"]').select("March").should("have.value", "3");
     cy.get('[data-qa="years"]').select("1980").should("have.value", "1980");
     cy.get("#newsletter").check();
     cy.get("#optin").check();
-    cy.get('[data-qa="first_name"]')
-      .type("First Test Name")
-      .should("have.attr", "required");
-    cy.get('[data-qa="last_name"]')
-      .type("Last Test Name")
-      .should("have.attr", "required");
+    cy.findTypeAndAssertRequired('[data-qa="first_name"]', "First Test Name");
+    cy.findTypeAndAssertRequired('[data-qa="last_name"]', "Last Test Name");
     cy.get('[data-qa="company"]').should("not.have.attr", "required");
-    cy.get('[data-qa="address"]')
-      .type("Test address")
-      .should("have.attr", "required");
+    cy.findTypeAndAssertRequired('[data-qa="address"]', "Test address");
     cy.get('[data-qa="address2"]').should("not.have.attr", "required");
     cy.get('[data-qa="country"]')
       .select("Canada")
       .should("have.value", "Canada");
-    cy.get('[data-qa="state"]')
-      .type("Test State")
-      .should("have.attr", "required");
-    cy.get('[data-qa="state"]')
-      .type("Test State")
-      .should("have.attr", "required");
-    cy.get('[data-qa="city"]')
-      .type("Test City")
-      .should("have.attr", "required");
-    cy.get('[data-qa="zipcode"]').type("00000").should("have.attr", "required");
-    cy.get('[data-qa="mobile_number"]')
-      .type("987654321")
-      .should("have.attr", "required");
+    cy.findTypeAndAssertRequired('[data-qa="state"]', "Test State");
+    cy.findTypeAndAssertRequired('[data-qa="city"]', "Test City");
+    cy.findTypeAndAssertRequired('[data-qa="zipcode"]', "00000");
+    cy.findTypeAndAssertRequired('[data-qa="mobile_number"]', "987654321");
     cy.get('[data-qa="create-account"]').click();
     cy.get('[data-qa="account-created"]').should(
       "contain.text",

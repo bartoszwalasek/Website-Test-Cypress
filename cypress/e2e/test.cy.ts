@@ -2,7 +2,7 @@ describe("Register and login test cases", () => {
   it("Register a new user", () => {
     cy.visit("/");
     cy.title().should("eq", "Automation Exercise");
-    cy.get(".shop-menu > .nav").contains(" Signup / Login").click();
+    cy.findInMenuAndClick(" Signup / Login")
     cy.findAndAssertText("#form", "New User Signup!");
     cy.findAndTypeWithoutAssert('[data-qa="signup-name"]', "Test user");
     cy.findAndTypeWithoutAssert(
@@ -40,7 +40,7 @@ describe("Register and login test cases", () => {
     cy.findAndAssertText('[data-qa="account-created"]', "Account Created");
     cy.findAndClick('[data-qa="continue-button"]');
     cy.findAndAssertText(".shop-menu > .nav", "Logged in as Test user");
-    cy.get(".shop-menu > .nav").contains(" Delete Account").click();
+    cy.findInMenuAndClick(" Delete Account")
     cy.findAndAssertText('[data-qa="account-deleted"]', "Account Deleted");
     cy.findAndClick('[data-qa="continue-button"]');
   });

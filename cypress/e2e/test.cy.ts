@@ -4,24 +4,34 @@ describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
     cy.findSelectorTextAndClick(".shop-menu > .nav", " Signup / Login");
-    cy.findAndAssertText("#form", "New User Signup!");
-    cy.findAndAssertText("#form", "Login to your account");
+    cy.findSelectorAndAssert("#form", "contain.text", "New User Signup!");
+    cy.findSelectorAndAssert("#form", "contain.text", "Login to your account");
   });
 
   it("Register a new user", () => {
     cy.findAndTypeWithoutAssert('[data-qa="signup-name"]', `${user.name}`);
     cy.findAndTypeWithoutAssert('[data-qa="signup-email"]', `${user.email}`);
     cy.findAndClick('[data-qa="signup-button"]');
-    cy.findAndAssertText(".login-form", "Enter Account Information");
-    cy.findAndAssertText(".login-form", "Address Information");
+    cy.findSelectorAndAssert(
+      ".login-form",
+      "contain.text",
+      "Enter Account Information"
+    );
+    cy.findSelectorAndAssert(
+      ".login-form",
+      "contain.text",
+      "Address Information"
+    );
     cy.findAndCheck(`[value=${user.gender}]`);
-    cy.get('[data-qa="name"]')
-      .should("have.value", `${user.name}`)
-      .should("have.attr", "required");
-    cy.get('[data-qa="email"]')
-      .should("have.value", `${user.email}`)
-      .should("be.disabled")
-      .should("have.attr", "required");
+    cy.findSelectorAndAssert('[data-qa="name"]', "have.value", `${user.name}`);
+    cy.findSelectorAndAssert('[data-qa="name"]', "have.attr", "required");
+    cy.findSelectorAndAssert(
+      '[data-qa="email"]',
+      "have.value",
+      `${user.email}`
+    );
+    cy.findSelectorAndAssert('[data-qa="email"]', "have.attr", "required");
+    cy.findSelectorAndAssert('[data-qa="email"]', "be.disabled", true);
     cy.findTypeAndAssertAttribute(
       '[data-qa="password"]',
       `${user.password}`,
@@ -54,13 +64,21 @@ describe("Register and login test cases", () => {
       `${user.lastName}`,
       "required"
     );
-    cy.get('[data-qa="company"]').should("not.have.attr", "required");
+    cy.findSelectorAndAssert(
+      '[data-qa="company"]',
+      "not.have.attr",
+      "required"
+    );
     cy.findTypeAndAssertAttribute(
       '[data-qa="address"]',
       `${user.address}`,
       "required"
     );
-    cy.get('[data-qa="address2"]').should("not.have.attr", "required");
+    cy.findSelectorAndAssert(
+      '[data-qa="address2"]',
+      "not.have.attr",
+      "required"
+    );
     cy.findSelectAndAssertValue(
       '[data-qa="country"]',
       `${user.country}`,
@@ -87,12 +105,20 @@ describe("Register and login test cases", () => {
       "required"
     );
     cy.findAndClick('[data-qa="create-account"]');
-    cy.findAndAssertText('[data-qa="account-created"]', "Account Created");
+    cy.findSelectorAndAssert(
+      '[data-qa="account-created"]',
+      "contain.text",
+      "Account Created"
+    );
     cy.findAndClick('[data-qa="continue-button"]');
-    cy.findAndAssertText(".shop-menu > .nav", `Logged in as ${user.name}`);
+    cy.findSelectorAndAssert(
+      ".shop-menu > .nav",
+      "contain.text",
+      `Logged in as ${user.name}`
+    );
     cy.findSelectorTextAndClick(".shop-menu > .nav", " Logout");
-    cy.findAndAssertText("#form", "New User Signup!");
-    cy.findAndAssertText("#form", "Login to your account");
+    cy.findSelectorAndAssert("#form", "contain.text", "New User Signup!");
+    cy.findSelectorAndAssert("#form", "contain.text", "Login to your account");
   });
 
   it("Login User with the correct email and password", () => {
@@ -102,9 +128,17 @@ describe("Register and login test cases", () => {
       `${user.password}`
     );
     cy.findAndClick('[data-qa="login-button"]');
-    cy.findAndAssertText(".shop-menu > .nav", `Logged in as ${user.name}`);
+    cy.findSelectorAndAssert(
+      ".shop-menu > .nav",
+      "contain.text",
+      `Logged in as ${user.name}`
+    );
     cy.findSelectorTextAndClick(".shop-menu > .nav", " Delete Account");
-    cy.findAndAssertText('[data-qa="account-deleted"]', "Account Deleted");
+    cy.findSelectorAndAssert(
+      '[data-qa="account-deleted"]',
+      "contain.text",
+      "Account Deleted"
+    );
     cy.findAndClick('[data-qa="continue-button"]');
   });
 });

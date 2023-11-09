@@ -22,7 +22,11 @@ describe("Register and login test cases", () => {
       .should("have.value", `${user.email}`)
       .should("be.disabled")
       .should("have.attr", "required");
-    cy.findTypeAndAssertRequired('[data-qa="password"]', `${user.password}`);
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="password"]',
+      `${user.password}`,
+      "required"
+    );
     cy.findSelectAndAssertValue(
       '[data-qa="days"]',
       `${user.dateOfBirth.day}`,
@@ -40,22 +44,47 @@ describe("Register and login test cases", () => {
     );
     cy.findAndCheck("#newsletter");
     cy.findAndCheck("#optin");
-    cy.findTypeAndAssertRequired('[data-qa="first_name"]', `${user.firstName}`);
-    cy.findTypeAndAssertRequired('[data-qa="last_name"]', `${user.lastName}`);
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="first_name"]',
+      `${user.firstName}`,
+      "required"
+    );
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="last_name"]',
+      `${user.lastName}`,
+      "required"
+    );
     cy.get('[data-qa="company"]').should("not.have.attr", "required");
-    cy.findTypeAndAssertRequired('[data-qa="address"]', `${user.address}`);
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="address"]',
+      `${user.address}`,
+      "required"
+    );
     cy.get('[data-qa="address2"]').should("not.have.attr", "required");
     cy.findSelectAndAssertValue(
       '[data-qa="country"]',
       `${user.country}`,
       "Canada"
     );
-    cy.findTypeAndAssertRequired('[data-qa="state"]', `${user.state}`);
-    cy.findTypeAndAssertRequired('[data-qa="city"]', `${user.city}`);
-    cy.findTypeAndAssertRequired('[data-qa="zipcode"]', `${user.zipcode}`);
-    cy.findTypeAndAssertRequired(
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="state"]',
+      `${user.state}`,
+      "required"
+    );
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="city"]',
+      `${user.city}`,
+      "required"
+    );
+    cy.findTypeAndAssertAttribute(
+      '[data-qa="zipcode"]',
+      `${user.zipcode}`,
+      "required"
+    );
+    cy.findTypeAndAssertAttribute(
       '[data-qa="mobile_number"]',
-      `${user.mobileNumber}`
+      `${user.mobileNumber}`,
+      "required"
     );
     cy.findAndClick('[data-qa="create-account"]');
     cy.findAndAssertText('[data-qa="account-created"]', "Account Created");

@@ -4,9 +4,10 @@ declare global {
     interface Chainable {
       openUrlAndCheckTitle(page: string, title: string): Chainable<void>;
       findAndTypeWithoutAssert(selector: string, text: string): Chainable<void>;
-      findTypeAndAssertRequired(
+      findTypeAndAssertAttribute(
         selector: string,
-        text: string
+        text: string,
+        attribute: string
       ): Chainable<void>;
       findSelectAndAssertValue(
         selector: string,
@@ -30,9 +31,12 @@ Cypress.Commands.add("findAndTypeWithoutAssert", (selector, text) => {
   cy.get(selector).type(text);
 });
 
-Cypress.Commands.add("findTypeAndAssertRequired", (selector, text) => {
-  cy.get(selector).type(text).should("have.attr", "required");
-});
+Cypress.Commands.add(
+  "findTypeAndAssertAttribute",
+  (selector, text, attribute) => {
+    cy.get(selector).type(text).should("have.attr", attribute);
+  }
+);
 
 Cypress.Commands.add("findSelectAndAssertValue", (selector, select, value) => {
   cy.get(selector).select(select).should("have.value", value);

@@ -2,6 +2,7 @@ export {};
 declare global {
   namespace Cypress {
     interface Chainable {
+      openUrlAndCheckTitle(page: string, title: string): Chainable<void>;
       findAndTypeWithoutAssert(selector: string, text: string): Chainable<void>;
       findTypeAndAssertRequired(
         selector: string,
@@ -15,10 +16,15 @@ declare global {
       findAndClick(selector: string): Chainable<void>;
       findAndCheck(selector: string): Chainable<void>;
       findAndAssertText(selector: string, text: string): Chainable<void>;
-      findInMenuAndClick(text: string): Chainable<void>;
+      findSelectorTextAndClick(selector: string, text: string): Chainable<void>;
     }
   }
 }
+
+Cypress.Commands.add("openUrlAndCheckTitle", (page, title) => {
+  cy.visit(page);
+  cy.title().should("eq", title);
+});
 
 Cypress.Commands.add("findAndTypeWithoutAssert", (selector, text) => {
   cy.get(selector).type(text);
@@ -44,6 +50,6 @@ Cypress.Commands.add("findAndAssertText", (selector, text) => {
   cy.get(selector).should("contain.text", text);
 });
 
-Cypress.Commands.add("findInMenuAndClick", (text) => {
-  cy.get(".shop-menu > .nav").contains(text).click();
+Cypress.Commands.add("findSelectorTextAndClick", (selector, text) => {
+  cy.get(selector).contains(text).click();
 });

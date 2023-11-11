@@ -1,140 +1,134 @@
+import {
+  mainPage,
+  loginSignupPage,
+  signup,
+  general,
+} from "../support/selectors";
 import testUser from "../fixtures/testUser.json";
 
 describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
-    cy.findSelectorTextAndClick(".shop-menu > .nav", " Signup / Login");
-    cy.findSelectorAndAssert("#form", "contain.text", "New User Signup!");
-    cy.findSelectorAndAssert("#form", "contain.text", "Login to your account");
+    cy.findSelectorTextAndClick(mainPage.nav, " Signup / Login");
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      "New User Signup!"
+    );
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      "Login to your account"
+    );
   });
 
   it("Register a new user", () => {
-    cy.findAndTypeWithoutAssert('[data-qa="signup-name"]', testUser.name);
-    cy.findAndTypeWithoutAssert('[data-qa="signup-email"]', testUser.email);
-    cy.findAndClick('[data-qa="signup-button"]');
+    cy.findAndTypeWithoutAssert(loginSignupPage.signupName, testUser.name);
+    cy.findAndTypeWithoutAssert(loginSignupPage.signupEmail, testUser.email);
+    cy.findAndClick(loginSignupPage.signupButton);
     cy.findSelectorAndAssert(
-      ".login-form",
+      signup.mainForm,
       "contain.text",
       "Enter Account Information"
     );
     cy.findSelectorAndAssert(
-      ".login-form",
+      signup.mainForm,
       "contain.text",
       "Address Information"
     );
     cy.findAndCheck(`[value=${testUser.gender}]`);
-    cy.findSelectorAndAssert('[data-qa="name"]', "have.value", testUser.name);
-    cy.findSelectorAndAssert('[data-qa="name"]', "have.attr", "required");
-    cy.findSelectorAndAssert('[data-qa="email"]', "have.value", testUser.email);
-    cy.findSelectorAndAssert('[data-qa="email"]', "have.attr", "required");
-    cy.findSelectorAndAssert('[data-qa="email"]', "be.disabled", true);
+    cy.findSelectorAndAssert(signup.name, "have.value", testUser.name);
+    cy.findSelectorAndAssert(signup.name, "have.attr", "required");
+    cy.findSelectorAndAssert(signup.email, "have.value", testUser.email);
+    cy.findSelectorAndAssert(signup.email, "have.attr", "required");
+    cy.findSelectorAndAssert(signup.email, "be.disabled", true);
     cy.findTypeAndAssertAttribute(
-      '[data-qa="password"]',
+      signup.password,
       testUser.password,
       "required"
     );
     cy.findSelectAndAssertValue(
-      '[data-qa="days"]',
+      signup.dateOfBirth.day,
       `${testUser.dateOfBirth.day}`,
       "15"
     );
     cy.findSelectAndAssertValue(
-      '[data-qa="months"]',
+      signup.dateOfBirth.month,
       `${testUser.dateOfBirth.month}`,
       "3"
     );
     cy.findSelectAndAssertValue(
-      '[data-qa="years"]',
+      signup.dateOfBirth.year,
       testUser.dateOfBirth.year,
       "1980"
     );
-    cy.findAndCheck("#newsletter");
-    cy.findAndCheck("#optin");
+    cy.findAndCheck(signup.newsletter);
+    cy.findAndCheck(signup.offers);
     cy.findTypeAndAssertAttribute(
-      '[data-qa="first_name"]',
+      signup.firstName,
       testUser.firstName,
       "required"
     );
     cy.findTypeAndAssertAttribute(
-      '[data-qa="last_name"]',
+      signup.lastName,
       testUser.lastName,
       "required"
     );
-    cy.findSelectorAndAssert(
-      '[data-qa="company"]',
-      "not.have.attr",
-      "required"
-    );
+    cy.findSelectorAndAssert(signup.company, "not.have.attr", "required");
+    cy.findTypeAndAssertAttribute(signup.address, testUser.address, "required");
+    cy.findSelectorAndAssert(signup.address2, "not.have.attr", "required");
+    cy.findSelectAndAssertValue(signup.country, testUser.country, "Canada");
+    cy.findTypeAndAssertAttribute(signup.state, testUser.state, "required");
+    cy.findTypeAndAssertAttribute(signup.city, testUser.city, "required");
+    cy.findTypeAndAssertAttribute(signup.zipcode, testUser.zipcode, "required");
     cy.findTypeAndAssertAttribute(
-      '[data-qa="address"]',
-      testUser.address,
-      "required"
-    );
-    cy.findSelectorAndAssert(
-      '[data-qa="address2"]',
-      "not.have.attr",
-      "required"
-    );
-    cy.findSelectAndAssertValue(
-      '[data-qa="country"]',
-      testUser.country,
-      "Canada"
-    );
-    cy.findTypeAndAssertAttribute(
-      '[data-qa="state"]',
-      testUser.state,
-      "required"
-    );
-    cy.findTypeAndAssertAttribute(
-      '[data-qa="state"]',
-      testUser.city,
-      "required"
-    );
-    cy.findTypeAndAssertAttribute(
-      '[data-qa="state"]',
-      testUser.zipcode,
-      "required"
-    );
-    cy.findTypeAndAssertAttribute(
-      '[data-qa="state"]',
+      signup.mobileNumber,
       testUser.mobileNumber,
       "required"
     );
-    cy.findAndClick('[data-qa="create-account"]');
+    cy.findAndClick(signup.createAccountButton);
     cy.findSelectorAndAssert(
-      '[data-qa="account-created"]',
+      general.accoutCreated,
       "contain.text",
       "Account Created"
     );
-    cy.findAndClick('[data-qa="continue-button"]');
+    cy.findAndClick(general.continueButton);
     cy.findSelectorAndAssert(
-      ".shop-menu > .nav",
+      mainPage.nav,
       "contain.text",
       `Logged in as ${testUser.name}`
     );
-    cy.findSelectorTextAndClick(".shop-menu > .nav", " Logout");
-    cy.findSelectorAndAssert("#form", "contain.text", "New User Signup!");
-    cy.findSelectorAndAssert("#form", "contain.text", "Login to your account");
+    cy.findSelectorTextAndClick(mainPage.nav, " Logout");
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      "New User Signup!"
+    );
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      "Login to your account"
+    );
   });
 
   it("Login User with the correct email and password", () => {
-    cy.findAndTypeWithoutAssert('[data-qa="login-email"]', testUser.email);
+    cy.findAndTypeWithoutAssert(loginSignupPage.loginEmail, testUser.email);
     cy.findAndTypeWithoutAssert(
-      '[data-qa="login-password"]',
+      loginSignupPage.loginPassword,
       testUser.password
     );
-    cy.findAndClick('[data-qa="login-button"]');
+    cy.findAndClick(loginSignupPage.loginButton);
     cy.findSelectorAndAssert(
-      ".shop-menu > .nav",
+      mainPage.nav,
       "contain.text",
       `Logged in as ${testUser.name}`
     );
-    cy.findSelectorTextAndClick(".shop-menu > .nav", " Delete Account");
+    cy.findSelectorTextAndClick(mainPage.nav, " Delete Account");
     cy.findSelectorAndAssert(
-      '[data-qa="account-deleted"]',
+      general.accoutDeleted,
       "contain.text",
       "Account Deleted"
     );
-    cy.findAndClick('[data-qa="continue-button"]');
+    cy.findAndClick(general.continueButton);
   });
 });

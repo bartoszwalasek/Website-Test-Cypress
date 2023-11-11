@@ -45,7 +45,8 @@ describe("Register and login test cases", () => {
     cy.findTypeAndAssertAttribute(
       signup.password,
       testUser.password,
-      "required"
+      "required",
+      { log: false }
     );
     cy.findSelectAndAssertValue(
       signup.dateOfBirth.day,

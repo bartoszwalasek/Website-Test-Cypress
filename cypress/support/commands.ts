@@ -1,4 +1,8 @@
 export {};
+
+interface logOption {
+  log: boolean;
+}
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -7,7 +11,8 @@ declare global {
       findTypeAndAssertAttribute(
         selector: string,
         text: string,
-        attribute: string
+        attribute: string,
+        options?: logOption
       ): Chainable<void>;
       findSelectAndAssertValue(
         selector: string,
@@ -37,8 +42,8 @@ Cypress.Commands.add("findAndTypeWithoutAssert", (selector, text) => {
 
 Cypress.Commands.add(
   "findTypeAndAssertAttribute",
-  (selector, text, attribute) => {
-    cy.get(selector).type(text).should("have.attr", attribute);
+  (selector, text, attribute, options = { log: true }) => {
+    cy.get(selector).type(text, options).should("have.attr", attribute);
   }
 );
 

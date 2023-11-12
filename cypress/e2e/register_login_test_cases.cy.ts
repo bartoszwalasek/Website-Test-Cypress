@@ -22,7 +22,7 @@ describe("Register and login test cases", () => {
     );
   });
 
-  it("Register a new user", () => {
+  it("Register a new User", () => {
     cy.findAndTypeWithoutAssert(loginSignupPage.signupName, testUser.name);
     cy.findAndTypeWithoutAssert(loginSignupPage.signupEmail, testUser.email);
     cy.findAndClick(loginSignupPage.signupButton);
@@ -109,6 +109,17 @@ describe("Register and login test cases", () => {
       loginSignupPage.form,
       "contain.text",
       "Login to your account"
+    );
+  });
+
+  it("Register User with existing email", () => {
+    cy.findAndTypeWithoutAssert(loginSignupPage.signupName, testUser.name);
+    cy.findAndTypeWithoutAssert(loginSignupPage.signupEmail, testUser.email);
+    cy.findAndClick(loginSignupPage.signupButton);
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      `Email Address already exist!`
     );
   });
 

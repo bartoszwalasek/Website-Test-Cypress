@@ -37,11 +37,11 @@ describe("Register and login test cases", () => {
       "Address Information"
     );
     cy.findAndCheck(`[value=${testUser.gender}]`);
-    cy.findSelectorAndAssert(signup.name, "have.value", testUser.name);
-    cy.findSelectorAndAssert(signup.name, "have.attr", "required");
-    cy.findSelectorAndAssert(signup.email, "have.value", testUser.email);
-    cy.findSelectorAndAssert(signup.email, "have.attr", "required");
-    cy.findSelectorAndAssert(signup.email, "be.disabled", true);
+    cy.findSelectorAndAssert(general.userName, "have.value", testUser.name);
+    cy.findSelectorAndAssert(general.userName, "have.attr", "required");
+    cy.findSelectorAndAssert(general.userEmail, "have.value", testUser.email);
+    cy.findSelectorAndAssert(general.userEmail, "have.attr", "required");
+    cy.findSelectorAndAssert(general.userEmail, "be.disabled", true);
     cy.findTypeAndAssertAttribute(
       signup.password,
       testUser.password,

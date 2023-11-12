@@ -14,8 +14,6 @@ export const loginSignupPage = {
 
 export const signup = {
   mainForm: ".login-form",
-  name: '[data-qa="name"]',
-  email: '[data-qa="email"]',
   password: '[data-qa="password"]',
   dateOfBirth: {
     day: '[data-qa="days"]',
@@ -41,4 +39,16 @@ export const general = {
   accoutCreated: '[data-qa="account-created"]',
   accoutDeleted: '[data-qa="account-deleted"]',
   continueButton: '[data-qa="continue-button"]',
+  userName: '[data-qa="name"]',
+  userEmail: '[data-qa="email"]',
+};
+
+export const contact = {
+  formTitle: ".contact-form > .title",
+  subject: '[data-qa="subject"]',
+  message: '[data-qa="message"]',
+  uploadFile: '[name="upload_file"]',
+  submitButton: '[data-qa="submit-button"]',
+  homeButton: "#form-section > .btn",
+  submitConfirmation: ".contact-form > .alert-success",
 };

@@ -112,6 +112,24 @@ describe("Register and login test cases", () => {
     );
   });
 
+  it("Login User with the incorrect email and password", () => {
+    cy.findAndTypeWithoutAssert(
+      loginSignupPage.loginEmail,
+      `${testUser.email}incorrect`
+    );
+    cy.findAndTypeWithoutAssert(
+      loginSignupPage.loginPassword,
+      `${testUser.password}_incorrect`,
+      { log: false }
+    );
+    cy.findAndClick(loginSignupPage.loginButton);
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      `Your email or password is incorrect!`
+    );
+  });
+
   it("Login User with the correct email and password", () => {
     cy.findAndTypeWithoutAssert(loginSignupPage.loginEmail, testUser.email);
     cy.findAndTypeWithoutAssert(

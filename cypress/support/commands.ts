@@ -7,7 +7,11 @@ declare global {
   namespace Cypress {
     interface Chainable {
       openUrlAndCheckTitle(page: string, title: string): Chainable<void>;
-      findAndTypeWithoutAssert(selector: string, text: string): Chainable<void>;
+      findAndTypeWithoutAssert(
+        selector: string,
+        text: string,
+        options?: logOption
+      ): Chainable<void>;
       findTypeAndAssertAttribute(
         selector: string,
         text: string,
@@ -36,9 +40,12 @@ Cypress.Commands.add("openUrlAndCheckTitle", (page, title) => {
   cy.title().should("eq", title);
 });
 
-Cypress.Commands.add("findAndTypeWithoutAssert", (selector, text) => {
-  cy.get(selector).type(text);
-});
+Cypress.Commands.add(
+  "findAndTypeWithoutAssert",
+  (selector, text, options = { log: true }) => {
+    cy.get(selector).type(text, options);
+  }
+);
 
 Cypress.Commands.add(
   "findTypeAndAssertAttribute",

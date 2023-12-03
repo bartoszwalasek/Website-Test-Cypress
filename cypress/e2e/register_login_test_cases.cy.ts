@@ -5,11 +5,12 @@ import {
   general,
 } from "../support/selectors";
 import testUser from "../fixtures/testUser.json";
+import { navigateTo } from "../support/pageObjects/navigationPage";
 
 describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
-    cy.findSelectorTextAndClick(mainPage.nav, " Signup / Login");
+    navigateTo.SignupLoginPage();
     cy.findSelectorAndAssert(
       loginSignupPage.form,
       "contain.text",

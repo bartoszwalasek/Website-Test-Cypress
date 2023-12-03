@@ -1,10 +1,11 @@
 import { mainPage, contact, general } from "../support/selectors";
 import testUser from "../fixtures/testUser.json";
+import { navigateTo } from "../support/pageObjects/navigationPage";
 
 describe("Contact us test cases", () => {
   it("Submit contact us form", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
-    cy.findSelectorTextAndClick(mainPage.nav, " Contact us");
+    navigateTo.ContactUsPage();
     cy.findSelectorAndAssert(contact.formTitle, "contain.text", "Get In Touch");
     cy.findAndTypeWithoutAssert(general.userName, testUser.name);
     cy.findAndTypeWithoutAssert(general.userEmail, testUser.email);

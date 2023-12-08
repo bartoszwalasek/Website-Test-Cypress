@@ -4,7 +4,7 @@ import { contactUsPage } from "../support/pageObjects/contactUsPage";
 describe("Contact us test cases", () => {
   it("Submit contact us form", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
-    navigateTo.ContactUsPage();
-    contactUsPage.SubmitForm();
+    navigateTo.contactUsPage();
+    contactUsPage.submitForm();
   });
 });

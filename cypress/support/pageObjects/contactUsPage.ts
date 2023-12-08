@@ -2,7 +2,7 @@ import { contact, general } from "../selectors";
 import testUser from "../../fixtures/testUser.json";
 
 export class ContactUsPage {
-  SubmitForm() {
+  submitForm() {
     cy.findSelectorAndAssert(contact.formTitle, "contain.text", "Get In Touch");
     cy.findAndTypeWithoutAssert(general.userName, testUser.name);
     cy.findAndTypeWithoutAssert(general.userEmail, testUser.email);

@@ -1,7 +1,7 @@
 import { general, loginSignupPage, mainPage } from "../selectors";
 
 export class User {
-  Logout() {
+  logout() {
     cy.findSelectorTextAndClick(mainPage.nav, " Logout");
     cy.findSelectorAndAssert(
       loginSignupPage.form,
@@ -14,7 +14,7 @@ export class User {
       "Login to your account"
     );
   }
-  DeleteAccount() {
+  deleteAccount() {
     cy.findSelectorTextAndClick(mainPage.nav, " Delete Account");
     cy.findSelectorAndAssert(
       general.accoutDeleted,

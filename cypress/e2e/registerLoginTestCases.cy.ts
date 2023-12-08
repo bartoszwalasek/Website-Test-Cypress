@@ -1,9 +1,3 @@
-import {
-  mainPage,
-  loginSignupPage,
-  signup,
-  general,
-} from "../support/selectors";
 import testUser from "../fixtures/testUser.json";
 import { navigateTo } from "../support/pageObjects/navigationPage";
 import { register } from "../support/pageObjects/registerUserPage";
@@ -13,12 +7,12 @@ import { login } from "../support/pageObjects/loginUserPage";
 describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
-    navigateTo.SignupLoginPage();
+    navigateTo.signupLoginPage();
   });
 
   it("Register a new User", () => {
-    register.ProvideCorrectData(testUser.name, testUser.email);
-    register.SubmitForm(
+    register.provideCorrectData(testUser.name, testUser.email);
+    register.submitForm(
       testUser.gender,
       testUser.name,
       testUser.email,
@@ -35,11 +29,11 @@ describe("Register and login test cases", () => {
       testUser.zipcode,
       testUser.mobileNumber
     );
-    user.Logout();
+    user.logout();
   });
 
   it("Register User with existing email", () => {
-    register.ProvideIncorrectData(testUser.name, testUser.email);
+    register.provideIncorrectData(testUser.name, testUser.email);
   });
 
   it("Login User with the incorrect email and password", () => {
@@ -51,6 +45,6 @@ describe("Register and login test cases", () => {
 
   it("Login User with the correct email and password", () => {
     login.provideCorrectData(testUser.email, testUser.password, testUser.name);
-    user.DeleteAccount();
+    user.deleteAccount();
   });
 });

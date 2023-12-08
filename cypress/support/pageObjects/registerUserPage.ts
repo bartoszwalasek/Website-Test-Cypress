@@ -1,7 +1,7 @@
 import { general, loginSignupPage, mainPage, signup } from "../selectors";
 
 export class RegisterUser {
-  ProvideCorrectData(name: string, email: string) {
+  provideCorrectData(name: string, email: string) {
     cy.findAndTypeWithoutAssert(loginSignupPage.signupName, name);
     cy.findAndTypeWithoutAssert(loginSignupPage.signupEmail, email);
     cy.findAndClick(loginSignupPage.signupButton);
@@ -16,7 +16,7 @@ export class RegisterUser {
       "Address Information"
     );
   }
-  ProvideIncorrectData(name: string, email: string) {
+  provideIncorrectData(name: string, email: string) {
     cy.findAndTypeWithoutAssert(loginSignupPage.signupName, name);
     cy.findAndTypeWithoutAssert(loginSignupPage.signupEmail, email);
     cy.findAndClick(loginSignupPage.signupButton);
@@ -26,7 +26,7 @@ export class RegisterUser {
       `Email Address already exist!`
     );
   }
-  SubmitForm(
+  submitForm(
     gender: string,
     name: string,
     email: string,

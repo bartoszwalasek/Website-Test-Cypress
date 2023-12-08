@@ -1,16 +1,16 @@
 import { loginSignupPage, mainPage } from "../selectors";
 
 export class NavigationPage {
-  HomePage() {
+  homePage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Home");
   }
-  ProductsPage() {
+  productsPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Products");
   }
-  CartPage() {
+  cartPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Cart");
   }
-  SignupLoginPage() {
+  signupLoginPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Signup / Login");
     cy.findSelectorAndAssert(
       loginSignupPage.form,
@@ -23,16 +23,16 @@ export class NavigationPage {
       "Login to your account"
     );
   }
-  TestCasesPage() {
+  testCasesPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Test Cases");
   }
-  APITestingPage() {
+  apiTestingPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " API Testing");
   }
-  VideoTutorialsPage() {
+  videoTutorialsPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Video Tutorials");
   }
-  ContactUsPage() {
+  contactUsPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Contact us");
   }
 }

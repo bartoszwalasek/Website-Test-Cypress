@@ -8,6 +8,7 @@ import testUser from "../fixtures/testUser.json";
 import { navigateTo } from "../support/pageObjects/navigationPage";
 import { register } from "../support/pageObjects/registerUserPage";
 import { user } from "../support/pageObjects/userPage";
+import { login } from "../support/pageObjects/loginUserPage";
 
 describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
@@ -34,43 +35,22 @@ describe("Register and login test cases", () => {
       testUser.zipcode,
       testUser.mobileNumber
     );
-    user.Logout()
+    user.Logout();
   });
 
   it("Register User with existing email", () => {
-    register.ProvideIncorrectData(testUser.name, testUser.email)
+    register.ProvideIncorrectData(testUser.name, testUser.email);
   });
 
   it("Login User with the incorrect email and password", () => {
-    cy.findAndTypeWithoutAssert(
-      loginSignupPage.loginEmail,
-      `${testUser.email}incorrect`
-    );
-    cy.findAndTypeWithoutAssert(
-      loginSignupPage.loginPassword,
-      `${testUser.password}_incorrect`,
-      { log: false }
-    );
-    cy.findAndClick(loginSignupPage.loginButton);
-    cy.findSelectorAndAssert(
-      loginSignupPage.form,
-      "contain.text",
-      `Your email or password is incorrect!`
+    login.provideIncorrectData(
+      `${testUser.email}_incorrect`,
+      `${testUser.password}_incorrect`
     );
   });
 
   it("Login User with the correct email and password", () => {
-    cy.findAndTypeWithoutAssert(loginSignupPage.loginEmail, testUser.email);
-    cy.findAndTypeWithoutAssert(
-      loginSignupPage.loginPassword,
-      testUser.password
-    );
-    cy.findAndClick(loginSignupPage.loginButton);
-    cy.findSelectorAndAssert(
-      mainPage.nav,
-      "contain.text",
-      `Logged in as ${testUser.name}`
-    );
-    user.DeleteAccount()
+    login.provideCorrectData(testUser.email, testUser.password, testUser.name);
+    user.DeleteAccount();
   });
 });

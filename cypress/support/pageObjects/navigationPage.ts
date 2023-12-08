@@ -1,4 +1,4 @@
-import { mainPage } from "../selectors";
+import { loginSignupPage, mainPage } from "../selectors";
 
 export class NavigationPage {
   HomePage() {
@@ -12,6 +12,16 @@ export class NavigationPage {
   }
   SignupLoginPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Signup / Login");
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      "New User Signup!"
+    );
+    cy.findSelectorAndAssert(
+      loginSignupPage.form,
+      "contain.text",
+      "Login to your account"
+    );
   }
   TestCasesPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Test Cases");

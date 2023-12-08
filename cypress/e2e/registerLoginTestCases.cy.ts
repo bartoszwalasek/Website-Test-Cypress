@@ -11,16 +11,6 @@ describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
     cy.openUrlAndCheckTitle("/", "Automation Exercise");
     navigateTo.SignupLoginPage();
-    cy.findSelectorAndAssert(
-      loginSignupPage.form,
-      "contain.text",
-      "New User Signup!"
-    );
-    cy.findSelectorAndAssert(
-      loginSignupPage.form,
-      "contain.text",
-      "Login to your account"
-    );
   });
 
   it("Register a new User", () => {

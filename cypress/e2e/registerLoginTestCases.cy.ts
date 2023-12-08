@@ -7,6 +7,7 @@ import {
 import testUser from "../fixtures/testUser.json";
 import { navigateTo } from "../support/pageObjects/navigationPage";
 import { register } from "../support/pageObjects/registerUserPage";
+import { user } from "../support/pageObjects/userPage";
 
 describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {
@@ -33,17 +34,7 @@ describe("Register and login test cases", () => {
       testUser.zipcode,
       testUser.mobileNumber
     );
-    cy.findSelectorTextAndClick(mainPage.nav, " Logout");
-    cy.findSelectorAndAssert(
-      loginSignupPage.form,
-      "contain.text",
-      "New User Signup!"
-    );
-    cy.findSelectorAndAssert(
-      loginSignupPage.form,
-      "contain.text",
-      "Login to your account"
-    );
+    user.Logout()
   });
 
   it("Register User with existing email", () => {
@@ -80,12 +71,6 @@ describe("Register and login test cases", () => {
       "contain.text",
       `Logged in as ${testUser.name}`
     );
-    cy.findSelectorTextAndClick(mainPage.nav, " Delete Account");
-    cy.findSelectorAndAssert(
-      general.accoutDeleted,
-      "contain.text",
-      "Account Deleted"
-    );
-    cy.findAndClick(general.continueButton);
+    user.DeleteAccount()
   });
 });

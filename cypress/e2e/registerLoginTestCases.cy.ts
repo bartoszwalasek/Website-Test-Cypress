@@ -38,8 +38,8 @@ describe("Register and login test cases", () => {
 
   it("Login User with the incorrect email and password", () => {
     login.provideIncorrectData(
-      `${testUser.email}_incorrect`,
-      `${testUser.password}_incorrect`
+      `incorrect_${testUser.email}`,
+      `incorrect_${testUser.password}`
     );
   });
 

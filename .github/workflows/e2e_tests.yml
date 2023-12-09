@@ -8,7 +8,7 @@ on:
       - "main"
 
 jobs:
-  Cypress-Test-Chrome:
+  Cypress-Tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

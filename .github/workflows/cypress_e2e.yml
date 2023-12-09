@@ -19,3 +19,7 @@ jobs:
         with:
           command: npx cypress run
           browser: chrome
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Automationexercise Test Report - Chrome
+          path: cypress/reports

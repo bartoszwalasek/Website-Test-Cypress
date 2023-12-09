@@ -4,7 +4,12 @@
   "description": "Repository to tests website - https://www.automationexercise.com/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "chrome_headed": "npx cypress run --browser=chrome --headed",
+    "chrome": "npx cypress run --browser=chrome",
+    "firefox_headed": "npx cypress run --browser=firefox --headed",
+    "firefox": "npx cypress run --browser=firefox",
+    "edge_headed": "npx cypress run --browser=edge --headed",
+    "edge": "npx cypress run --browser=edge"
   },
   "repository": {
     "type": "git",
@@ -18,6 +23,7 @@
   "homepage": "https://github.com/bartoszwalasek/Website-Test-Cypress#readme",
   "devDependencies": {
     "cypress": "^13.4.0",
+    "cypress-mochawesome-reporter": "^3.7.0",
     "typescript": "^5.2.2"
   }
 }

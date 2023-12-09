@@ -1,0 +1,45 @@
+name: Automationexercise Cypress Test
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+ Cypress-Test:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v4
+ 
+     - name: Run Cypress Test - Chrome
+       uses: cypress-io/github-action@v6
+       with:
+         command: npx cypress run
+         browser: chrome
+       uses: actions/upload-artifact@v3
+       with:
+         name: Automationexercise Test Report - Chrome
+         path: cypress/reports
+
+     - name: Run Cypress Test - Firefox
+       uses: cypress-io/github-action@v6
+       with:
+         command: npx cypress run
+         browser: firefox
+       uses: actions/upload-artifact@v3
+       with:
+         name: Automationexercise Test Report - Firefox
+         path: cypress/reports
+
+     - name: Run Cypress Test - Edge
+       uses: cypress-io/github-action@v6
+       with:
+         command: npx cypress run
+         browser: edge
+       uses: actions/upload-artifact@v3
+       with:
+         name: Automationexercise Test Report - Edge
+         path: cypress/reports

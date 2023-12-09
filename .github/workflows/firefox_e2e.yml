@@ -20,6 +20,7 @@ jobs:
           command: npx cypress run
           browser: firefox
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: Automationexercise Test Report - Firefox
           path: cypress/reports

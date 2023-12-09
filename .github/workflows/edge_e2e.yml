@@ -20,6 +20,7 @@ jobs:
           command: npx cypress run
           browser: edge
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: Automationexercise Test Report - Edge
           path: cypress/reports

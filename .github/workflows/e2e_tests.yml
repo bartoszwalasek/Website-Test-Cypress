@@ -1,4 +1,4 @@
-name: Automationexercise Cypress Test - Chrome
+name: Automationexercise Cypress Test
 on:
   push:
     branches:

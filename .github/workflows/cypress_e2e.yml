@@ -19,8 +19,8 @@ jobs:
        with:
          command: npx cypress run
          browser: chrome
-       uses: actions/upload-artifact@v3
-       with:
+     - uses: actions/upload-artifact@v3
+     - with:
          name: Automationexercise Test Report - Chrome
          path: cypress/reports
 
@@ -29,8 +29,8 @@ jobs:
        with:
          command: npx cypress run
          browser: firefox
-       uses: actions/upload-artifact@v3
-       with:
+     - uses: actions/upload-artifact@v3
+     - with:
          name: Automationexercise Test Report - Firefox
          path: cypress/reports
 
@@ -39,7 +39,7 @@ jobs:
        with:
          command: npx cypress run
          browser: edge
-       uses: actions/upload-artifact@v3
-       with:
+     - uses: actions/upload-artifact@v3
+     - with:
          name: Automationexercise Test Report - Edge
          path: cypress/reports

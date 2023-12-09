@@ -1,0 +1,25 @@
+name: Automationexercise Cypress Test - Firefox
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  Cypress-Test-Firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Cypress Test - Firefox
+        uses: cypress-io/github-action@v6
+        with:
+          command: npx cypress run
+          browser: firefox
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Automationexercise Test Report - Firefox
+          path: cypress/reports

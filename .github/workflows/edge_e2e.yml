@@ -1,0 +1,25 @@
+name: Automationexercise Cypress Test - Edge
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  Cypress-Test-Edge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Cypress Test - Edge
+        uses: cypress-io/github-action@v6
+        with:
+          command: npx cypress run
+          browser: edge
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Automationexercise Test Report - Edge
+          path: cypress/reports

@@ -1,4 +1,4 @@
-import { loginSignupPage, mainPage } from "../selectors";
+import { loginSignupPage, mainPage, products } from "../selectors";
 
 export class NavigationPage {
   homePage() {
@@ -6,6 +6,11 @@ export class NavigationPage {
   }
   productsPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Products");
+    cy.findSelectorAndAssert(
+      products.allProductsHeader,
+      "contain.text",
+      "All Products"
+    );
   }
   cartPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Cart");

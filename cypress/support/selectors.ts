@@ -41,6 +41,7 @@ export const general = {
   continueButton: '[data-qa="continue-button"]',
   userName: '[data-qa="name"]',
   userEmail: '[data-qa="email"]',
+  image: "img",
 };
 
 export const contact = {
@@ -51,4 +52,13 @@ export const contact = {
   submitButton: '[data-qa="submit-button"]',
   homeButton: "#form-section > .btn",
   submitConfirmation: ".contact-form > .alert-success",
+};
+
+export const products = {
+  allProductsHeader: ".features_items > .title",
+  productWrapper: ".product-image-wrapper",
+};
+
+export const product = {
+  productInformation: ".product-information",
 };

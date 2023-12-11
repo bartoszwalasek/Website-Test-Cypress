@@ -1,7 +1,7 @@
 import { products, product, general } from "../selectors";
 
 export class ProductsPage {
-  verifyAllProductslist() {
+  verifyProductsList() {
     cy.get(products.productWrapper).each((product) => {
       cy.wrap(product)
         .find(general.image)
@@ -11,7 +11,7 @@ export class ProductsPage {
   }
   goToProductDetails(productName: string) {
     cy.contains(products.productWrapper, productName)
-      .contains("View Product")
+      .contains(products.viewProduct)
       .click();
     cy.findSelectorAndAssert(
       product.productInformation,

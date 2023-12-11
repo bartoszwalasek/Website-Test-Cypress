@@ -57,6 +57,7 @@ export const contact = {
 export const products = {
   allProductsHeader: ".features_items > .title",
   productWrapper: ".product-image-wrapper",
+  viewProduct: "View Product"
 };
 
 export const product = {

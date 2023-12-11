@@ -7,7 +7,7 @@ export class NavigationPage {
   productsPage() {
     cy.findSelectorTextAndClick(mainPage.nav, " Products");
     cy.findSelectorAndAssert(
-      products.allProductsHeader,
+      products.ProductsHeader,
       "contain.text",
       "All Products"
     );

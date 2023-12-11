@@ -55,9 +55,12 @@ export const contact = {
 };
 
 export const products = {
-  allProductsHeader: ".features_items > .title",
+  ProductsHeader: ".features_items > .title",
+  productInfo: ".productinfo",
   productWrapper: ".product-image-wrapper",
-  viewProduct: "View Product"
+  viewProduct: "View Product",
+  searchProductInput: "#search_product",
+  searchProductButton: "#submit_search",
 };
 
 export const product = {

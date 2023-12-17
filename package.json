@@ -4,12 +4,14 @@
   "description": "Repository to tests website - https://www.automationexercise.com/",
   "main": "index.js",
   "scripts": {
-    "chrome_headed": "npx cypress run --browser=chrome --headed",
-    "chrome": "npx cypress run --browser=chrome",
-    "firefox_headed": "npx cypress run --browser=firefox --headed",
-    "firefox": "npx cypress run --browser=firefox",
-    "edge_headed": "npx cypress run --browser=edge --headed",
-    "edge": "npx cypress run --browser=edge"
+    "cypress:api": "npx cypress run --spec 'cypress/e2e/API'",
+    "cypress:ui": "npx cypress run --spec 'cypress/e2e/UI'",
+    "chrome_headed": "npx cypress run --spec 'cypress/e2e/UI' --browser=chrome --headed",
+    "chrome": "npx cypress run --spec 'cypress/e2e/UI' --browser=chrome",
+    "firefox_headed": "npx cypress run --spec 'cypress/e2e/UI' --browser=firefox --headed",
+    "firefox": "npx cypress run --spec 'cypress/e2e/UI' --browser=firefox",
+    "edge_headed": "npx cypress run --spec 'cypress/e2e/UI' --browser=edge --headed",
+    "edge": "npx cypress run --spec 'cypress/e2e/UI' --browser=edge"
   },
   "repository": {
     "type": "git",

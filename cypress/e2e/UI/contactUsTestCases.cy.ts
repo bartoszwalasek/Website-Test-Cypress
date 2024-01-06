@@ -1,5 +1,5 @@
-import { navigateTo } from "../support/pageObjects/navigationPage";
-import { contactUsPage } from "../support/pageObjects/contactUsPage";
+import { navigateTo } from "../../support/pageObjects/navigationPage";
+import { contactUsPage } from "../../support/pageObjects/contactUsPage";
 
 describe("Contact us test cases", () => {
   it("Submit contact us form", () => {

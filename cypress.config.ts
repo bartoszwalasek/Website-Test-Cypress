@@ -5,7 +5,7 @@ export default defineConfig({
   video: true,
   reporterOptions: {
     charts: true,
-    reportPageTitle: "Automationexercise Test Report",
+    reportPageTitle: "Cypress Tests Report",
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,

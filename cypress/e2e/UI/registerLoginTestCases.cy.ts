@@ -1,8 +1,8 @@
-import testUser from "../fixtures/testUser.json";
-import { navigateTo } from "../support/pageObjects/navigationPage";
-import { register } from "../support/pageObjects/registerUserPage";
-import { user } from "../support/pageObjects/userPage";
-import { login } from "../support/pageObjects/loginUserPage";
+import testUser from "../../fixtures/testUser.json";
+import { navigateTo } from "../../support/pageObjects/navigationPage";
+import { register } from "../../support/pageObjects/registerUserPage";
+import { user } from "../../support/pageObjects/userPage";
+import { login } from "../../support/pageObjects/loginUserPage";
 
 describe("Register and login test cases", () => {
   beforeEach("Open the Website and go to the Signup/Login section", () => {

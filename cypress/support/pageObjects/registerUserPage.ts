@@ -1,6 +1,6 @@
 import { general, loginSignupPage, mainPage, signup } from "../selectors";
 
-export class RegisterUser {
+export class RegisterUserPage {
   provideCorrectData(name: string, email: string) {
     cy.findAndTypeWithoutAssert(loginSignupPage.signupName, name);
     cy.findAndTypeWithoutAssert(loginSignupPage.signupEmail, email);
@@ -90,4 +90,4 @@ export class RegisterUser {
   }
 }
 
-export const register = new RegisterUser();
+export const register = new RegisterUserPage();

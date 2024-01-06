@@ -17,7 +17,7 @@ jobs:
       - name: Run Cypress Test - Chrome
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run
+          command: npm run cypress:ui
           browser: chrome
       - uses: actions/upload-artifact@v3
         if: always()
@@ -28,7 +28,7 @@ jobs:
       - name: Run Cypress Test - Firefox
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run
+          command: npm run cypress:ui
           browser: firefox
       - uses: actions/upload-artifact@v3
         if: always()
@@ -39,10 +39,20 @@ jobs:
       - name: Run Cypress Test - Edge
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run
+          command: npm run cypress:ui
           browser: edge
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Automationexercise Test Report - Edge
+          path: cypress/reports
+
+      - name: Run Cypress Test - API
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run cypress:api
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Cypress Test - API
           path: cypress/reports

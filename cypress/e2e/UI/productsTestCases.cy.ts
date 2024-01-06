@@ -1,7 +1,7 @@
-import { productName } from "../support/data";
-import { navigateTo } from "../support/pageObjects/navigationPage";
-import { productPage } from "../support/pageObjects/productPage";
-import { productsPage } from "../support/pageObjects/productsPage";
+import { productName } from "../../support/data";
+import { navigateTo } from "../../support/pageObjects/navigationPage";
+import { productPage } from "../../support/pageObjects/productPage";
+import { productsPage } from "../../support/pageObjects/productsPage";
 
 describe("Products test cases", () => {
   beforeEach("Go to Products Page", () => {

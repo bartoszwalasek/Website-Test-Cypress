@@ -1,6 +1,6 @@
 import { general, loginSignupPage, mainPage } from "../selectors";
 
-export class User {
+export class UserPage {
   logout() {
     cy.findSelectorTextAndClick(mainPage.nav, " Logout");
     cy.findSelectorAndAssert(
@@ -25,4 +25,4 @@ export class User {
   }
 }
 
-export const user = new User();
+export const user = new UserPage();

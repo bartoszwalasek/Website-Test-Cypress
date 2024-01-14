@@ -32,6 +32,7 @@ declare global {
         value: string | boolean
       ): Chainable<void>;
       uploadFile(selector: string, path: string): Chainable<void>;
+      findAndClear(selector: string): Chainable<void>;
     }
   }
 }
@@ -77,4 +78,8 @@ Cypress.Commands.add("findSelectorAndAssert", (selector, assert, value) => {
 
 Cypress.Commands.add("uploadFile", (selector, path) => {
   cy.get(selector).selectFile(path);
+});
+
+Cypress.Commands.add("findAndClear", (selector) => {
+  cy.get(selector).clear();
 });

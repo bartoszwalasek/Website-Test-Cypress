@@ -1,0 +1,19 @@
+{
+  "name": "Test User_2",
+  "email": "testuser_2@example.com",
+  "password": "P@ssword1!",
+  "gender": "Mrs",
+  "dateOfBirth": {
+    "day": "10",
+    "month": "June",
+    "year": "1990"
+  },
+  "firstName": "First Test Name",
+  "lastName": "Last Test Name",
+  "address": "Test address",
+  "country": "New Zealand",
+  "state": "Test State",
+  "city": "Test City",
+  "zipcode": "11111",
+  "mobileNumber": "123456789"
+}

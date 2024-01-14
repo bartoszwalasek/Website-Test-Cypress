@@ -65,4 +65,21 @@ export const products = {
 
 export const product = {
   productInformation: ".product-information",
+  quantity: "#quantity",
+  addToCartButton: "button.cart",
+};
+
+export const modal = {
+  header: ".modal-header",
+  body: ".modal-body",
+  footer: "modal-footer",
+};
+
+export const cart = {
+  content: ".cart_info tbody tr",
+  unitPrice: ".cart_price p",
+  description: ".cart_description",
+  totalPrice: ".cart_total",
+  deleteButton: ".cart_delete a",
+  emptyCart: "#empty_cart",
 };

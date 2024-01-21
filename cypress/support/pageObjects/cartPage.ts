@@ -1,36 +1,41 @@
 import { cart } from "../selectors";
 
+type cartData = {
+  productName: string;
+  quantity: string;
+};
+
 export class CartPage {
-  verifyCartDetails(productName: string, quantity: string) {
-    cy.get(cart.content).each((tableRow) => {
-      cy.get(cart.unitPrice)
-        .invoke("text")
-        .then((text) => {
-          const unitPrice: string = text.slice(4);
+  verifyCartDetails(dataToVerify: cartData[]) {
+    dataToVerify.forEach((data) => {
+      cy.contains(cart.content, data.productName).then((tableRow) => {
+        cy.wrap(tableRow)
+          .find(cart.description)
+          .should("contain.text", data.productName);
 
-          const totalPrice: string = (
-            parseInt(unitPrice) * parseInt(quantity)
-          ).toString();
+        cy.wrap(tableRow)
+          .find(cart.unitPrice)
+          .invoke("text")
+          .then((text) => {
+            cy.log(text);
+            const unitPrice: string = text.slice(4);
 
-          cy.wrap(tableRow)
-            .find(cart.description)
-            .should("contain.text", productName);
-          cy.wrap(tableRow)
-            .find(cart.totalPrice)
-            .should("contain.text", totalPrice);
-        });
+            const totalPrice: string = (
+              parseInt(unitPrice) * parseInt(data.quantity)
+            ).toString();
+
+            cy.wrap(tableRow)
+              .find(cart.totalPrice)
+              .should("contain.text", totalPrice);
+          });
+      });
     });
   }
   clearCart() {
     cy.get(cart.content).each((tableRow) => {
-      cy.wrap(tableRow);
-      cy.findAndClick(cart.deleteButton);
-      cy.findSelectorAndAssert(
-        cart.emptyCart,
-        "contain.text",
-        "Cart is empty!"
-      );
+      cy.wrap(tableRow).find(cart.deleteButton).click();
     });
+    cy.findSelectorAndAssert(cart.emptyCart, "contain.text", "Cart is empty!");
   }
 }
 

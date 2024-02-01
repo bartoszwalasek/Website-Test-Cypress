@@ -1,6 +1,6 @@
 # Tests with Cypress
 
-Repository to UI and API test with Cypress and TypeScript
+Repository to UI and API tests with Cypress and TypeScript.
 
 ## How to start
 
@@ -21,7 +21,7 @@ npm install
 npx cypress open
 ```
 
-5. You can also run test by below commands:
+5. You can also run test by below commands:\<br>
 API Tests:
 ```bash
 npm run cypress:api

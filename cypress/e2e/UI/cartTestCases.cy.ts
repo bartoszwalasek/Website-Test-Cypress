@@ -1,3 +1,4 @@
+import testUser_2 from "../../fixtures/testUser_2.json";
 import { cartPage } from "../../support/pageObjects/cartPage";
 import { login } from "../../support/pageObjects/loginUserPage";
 import { navigateTo } from "../../support/pageObjects/navigationPage";
@@ -8,9 +9,9 @@ describe("Cart test cases", () => {
   before("Login a user", () => {
     cy.openUrlAndCheckTitle("/login", "Automation Exercise - Signup / Login");
     login.provideCorrectData(
-      "testuser_2@example.com",
-      "P@ssword1!",
-      "Test User_2"
+      testUser_2.email,
+      testUser_2.password,
+      testUser_2.name
     );
   });
   it("Go to product details and add to the cart", () => {

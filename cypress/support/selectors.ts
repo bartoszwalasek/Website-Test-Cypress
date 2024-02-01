@@ -46,6 +46,7 @@ export const general = {
 };
 
 export const contact = {
+  header: "#contact-page .bg .title",
   formTitle: ".contact-form > .title",
   subject: '[data-qa="subject"]',
   message: '[data-qa="message"]',

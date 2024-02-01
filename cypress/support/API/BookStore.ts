@@ -1,16 +1,5 @@
 import { user } from "./User";
-
-type Book = {
-  author: string;
-  description: string;
-  isbn: string;
-  pages: number;
-  publish_date: string;
-  publisher: string;
-  subTitle: string;
-  title: string;
-  website: string;
-};
+import { Book } from "../types";
 
 export class BookStore {
   books: Book[];
@@ -68,7 +57,6 @@ export class BookStore {
         userId: user.id,
       },
     }).then((response) => {
-      cy.log(response.body);
       expect(response.status).to.eq(204);
     });
   }

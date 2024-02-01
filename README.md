@@ -21,12 +21,12 @@ npm install
 npx cypress open
 ```
 
-5. You can also run test by below commands:\<br>
-API Tests:
+5. You can also run test by below commands:  
+* API Tests:
 ```bash
 npm run cypress:api
 ```
-UI Tests:
+* UI Tests:
 ```bash
 npm run cypress:ui
 ```

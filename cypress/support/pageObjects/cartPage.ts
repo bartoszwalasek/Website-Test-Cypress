@@ -1,9 +1,5 @@
 import { cart } from "../selectors";
-
-type cartData = {
-  productName: string;
-  quantity: string;
-};
+import { cartData } from "../types";
 
 export class CartPage {
   verifyCartDetails(dataToVerify: cartData[]) {
@@ -17,7 +13,6 @@ export class CartPage {
           .find(cart.unitPrice)
           .invoke("text")
           .then((text) => {
-            cy.log(text);
             const unitPrice: string = text.slice(4);
 
             const totalPrice: string = (

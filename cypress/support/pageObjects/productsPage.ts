@@ -1,4 +1,4 @@
-import { products, product, general } from "../selectors";
+import { products, product, general, modal } from "../selectors";
 
 export class ProductsPage {
   verifyProductsList(productName: string = undefined) {
@@ -26,11 +26,21 @@ export class ProductsPage {
     cy.findAndTypeWithoutAssert(products.searchProductInput, productName);
     cy.findAndClick(products.searchProductButton);
     cy.findSelectorAndAssert(
-      products.ProductsHeader,
+      products.productsHeader,
       "contain.text",
       "Searched Products"
     );
     this.verifyProductsList(productName);
+  }
+  addProductsToCart(productsToCart: string[]) {
+    productsToCart.forEach((productName) => {
+      cy.contains(products.productOverlay, productName)
+        .contains(products.addToCart)
+        .click({ force: true });
+      if (cy.get(".modal-content")) {
+        cy.findSelectorTextAndClick(modal.footer, "Continue Shopping");
+      }
+    });
   }
 }
 

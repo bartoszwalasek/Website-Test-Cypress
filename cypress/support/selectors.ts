@@ -42,6 +42,7 @@ export const general = {
   userName: '[data-qa="name"]',
   userEmail: '[data-qa="email"]',
   image: "img",
+  breadcrumb: ".breadcrumb",
 };
 
 export const contact = {
@@ -55,12 +56,14 @@ export const contact = {
 };
 
 export const products = {
-  ProductsHeader: ".features_items > .title",
+  productsHeader: ".features_items > .title",
   productInfo: ".productinfo",
   productWrapper: ".product-image-wrapper",
   viewProduct: "View Product",
   searchProductInput: "#search_product",
   searchProductButton: "#submit_search",
+  productOverlay: ".product-overlay",
+  addToCart: "Add to cart",
 };
 
 export const product = {
@@ -72,7 +75,7 @@ export const product = {
 export const modal = {
   header: ".modal-header",
   body: ".modal-body",
-  footer: "modal-footer",
+  footer: ".modal-footer",
 };
 
 export const cart = {

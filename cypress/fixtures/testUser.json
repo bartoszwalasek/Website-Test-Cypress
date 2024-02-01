@@ -1,6 +1,6 @@
 {
-  "name": "Test User",
-  "email": "testuser@example.com",
+  "name": "Test User_001",
+  "email": "testuser_001@example.com",
   "password": "P@ssword1!",
   "gender": "Mr",
   "dateOfBirth": {

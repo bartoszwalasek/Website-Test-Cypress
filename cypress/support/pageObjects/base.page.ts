@@ -1,7 +1,7 @@
 
 
 export class BasePage {
-  url = "";
+  url = '';
   title = ''
 
   constructor() {}

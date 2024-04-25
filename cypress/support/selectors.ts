@@ -4,17 +4,6 @@ export const general = {
   breadcrumb: ".breadcrumb",
 };
 
-export const contact = {
-  header: "#contact-page .bg .title",
-  formTitle: ".contact-form > .title",
-  subject: '[data-qa="subject"]',
-  message: '[data-qa="message"]',
-  uploadFile: '[name="upload_file"]',
-  submitButton: '[data-qa="submit-button"]',
-  homeButton: "#form-section > .btn",
-  submitConfirmation: ".contact-form > .alert-success",
-};
-
 export const products = {
   productsHeader: ".features_items > .title",
   productInfo: ".productinfo",

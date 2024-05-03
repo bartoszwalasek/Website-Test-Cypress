@@ -5,14 +5,11 @@ import { AccountCreatedPage } from "../../support/pageObjects/account-created.pa
 import { MainPage } from "../../support/pageObjects/main.page";
 
 describe("Register user test cases", () => {
-  let loginPage: LoginPage;
-  let mainPage: MainPage;
-
+  const loginPage = new LoginPage();
   const registerUser = createMaleUser();
 
   beforeEach("Open the Website and go to the Signup/Login section", () => {
-    mainPage = new MainPage();
-    loginPage = new LoginPage();
+    const mainPage = new MainPage();
 
     mainPage.goToAndCheckTitle();
     mainPage.mainMenu.goToSignupLoginPage();

@@ -1,4 +1,4 @@
-import testUser from "../../fixtures/testUser.json";
+import testUser from "../../fixtures/testLoginUser.json";
 
 export class User {
   name: string = testUser.name;

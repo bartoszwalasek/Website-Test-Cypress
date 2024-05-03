@@ -1,8 +1,10 @@
+import { MainMenuComponent } from "../components/main-menu.component";
 import { CartModal } from "../modals/cart.modal";
 import { BasePage } from "./base.page";
 
 export class ProductsPage extends BasePage {
   url = "/products";
+  title = "Automation Exercise - All Products";
 
   productsHeader = ".features_items > .title";
   productInfo = ".productinfo";
@@ -15,6 +17,7 @@ export class ProductsPage extends BasePage {
   productOverlay = ".product-overlay";
   addToCartButton = "Add to cart";
 
+  mainMenu = new MainMenuComponent();
   cartModal = new CartModal();
 
   constructor() {

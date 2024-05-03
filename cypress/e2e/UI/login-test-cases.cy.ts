@@ -4,17 +4,12 @@ import { LoginPage } from "../../support/pageObjects/login.page";
 import { MainPage } from "../../support/pageObjects/main.page";
 
 describe("Login user test cases", () => {
-  let loginPage: LoginPage;
-  let mainPage: MainPage;
+  const mainPage = new MainPage();
+  const loginPage = new LoginPage();
 
-  let loginUser: User;
+  const loginUser = testLoginUser;
 
   beforeEach("Open the Website and go to the Signup/Login section", () => {
-    mainPage = new MainPage();
-    loginPage = new LoginPage();
-
-    loginUser = testLoginUser;
-
     mainPage.goToAndCheckTitle();
     mainPage.mainMenu.goToSignupLoginPage();
   });

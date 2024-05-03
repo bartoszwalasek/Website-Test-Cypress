@@ -3,12 +3,10 @@ import { ProductPage } from "../../support/pageObjects/product.page";
 import { ProductsPage } from "../../support/pageObjects/products.page";
 
 describe("Products test cases", () => {
-  let mainPage: MainPage;
-  let productsPage: ProductsPage;
+  const productsPage = new ProductsPage();
 
   beforeEach("Go to Products Page", () => {
-    mainPage = new MainPage();
-    productsPage = new ProductsPage();
+    const mainPage = new MainPage();
 
     mainPage.goToAndCheckTitle();
     mainPage.mainMenu.goToProductsPage();

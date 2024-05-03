@@ -1,4 +1,4 @@
-import { ContactUsForm } from "../models/contact-form.model";
+import { ContactUsForm } from "../models/contact-us-form.model";
 import { BasePage } from "./base.page";
 
 export class ContactUsPage extends BasePage {
@@ -15,7 +15,7 @@ export class ContactUsPage extends BasePage {
   constructor() {
     super();
   }
-  
+
   submitForm(contactUsForm: ContactUsForm) {
     cy.findAndTypeWithoutAssert(this.userName, contactUsForm.name);
     cy.findAndTypeWithoutAssert(this.userEmail, contactUsForm.email);

@@ -1,5 +1,5 @@
+import { Book } from "../models/book.model";
 import { user } from "./User";
-import { Book } from "../types";
 
 export class BookStore {
   books: Book[];

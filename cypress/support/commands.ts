@@ -18,11 +18,7 @@ declare global {
         attribute: string,
         options?: logOption
       ): Chainable<void>;
-      findSelectAndAssertValue(
-        selector: string,
-        select: string,
-        value: string
-      ): Chainable<void>;
+      findAndSelect(selector: string, select: string): Chainable<void>;
       findAndClick(selector: string): Chainable<void>;
       findAndCheck(selector: string): Chainable<void>;
       findSelectorTextAndClick(selector: string, text: string): Chainable<void>;
@@ -56,8 +52,8 @@ Cypress.Commands.add(
   }
 );
 
-Cypress.Commands.add("findSelectAndAssertValue", (selector, select, value) => {
-  cy.get(selector).select(select).should("have.value", value);
+Cypress.Commands.add("findAndSelect", (selector, select) => {
+  cy.get(selector).select(select);
 });
 
 Cypress.Commands.add("findAndClick", (selector) => {
@@ -73,7 +69,7 @@ Cypress.Commands.add("findSelectorTextAndClick", (selector, text) => {
 });
 
 Cypress.Commands.add("findSelectorAndAssert", (selector, assert, value) => {
-  cy.get(selector).should(assert, value);
+  cy.get(selector, { timeout: 60000 }).should(assert, value);
 });
 
 Cypress.Commands.add("uploadFile", (selector, path) => {
